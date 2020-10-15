@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -30,11 +31,15 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
 
         button.setOnClickListener(view -> onButtonClick());
-
     }
 
     private void onButtonClick() {
-
+        try {
+            int randomNumber = rngFromSpan(Integer.parseInt(editTextMin.getText().toString()), Integer.parseInt(editTextMax.getText().toString()));
+            textView.setText(String.valueOf(randomNumber));
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**

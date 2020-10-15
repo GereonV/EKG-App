@@ -34,7 +34,6 @@
             android:hint="Bis"
             android:inputType="number"/>
 
-        
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
