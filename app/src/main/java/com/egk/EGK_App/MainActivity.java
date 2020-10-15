@@ -3,6 +3,8 @@ package com.egk.EGK_App;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -10,6 +12,9 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
+    EditText editTextMin;
+    EditText editTextMax;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void initViews() {
         textView = findViewById(R.id.textView);
+        editTextMin = findViewById(R.id.editTextMin);
+        editTextMax = findViewById(R.id.editTextMax);
+        button = findViewById(R.id.button);
+
+        button.setOnClickListener(view -> onButtonClick());
+
+    }
+
+    private void onButtonClick() {
+
     }
 
     /**
