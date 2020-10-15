@@ -19,8 +19,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="Hello World!"/>
+            android:text=""/>
+        <EditText
+            android:id="@+id/editTextMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Von"
+            android:inputType="number"/>
 
+        <EditText
+            android:id="@+id/editTextMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Bis"
+            android:inputType="number"/>
+
+        
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
