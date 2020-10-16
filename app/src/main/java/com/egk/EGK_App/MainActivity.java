@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 int randomNumber = rngFromSpan(Integer.parseInt(editTextMin.getText().toString()), Integer.parseInt(editTextMax.getText().toString()));
                 textView.setText(String.valueOf(randomNumber));
             } else {
-                Toast.makeText(this, "Eingabe ausfüllen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
      * @param max größte Zahl (inklusive)
      */
     private int rngFromSpan(int min, int max) throws Exception {
-        if(max <= min) throw new Exception("max-min Verhältnis");
+        if(max <= min) throw new Exception(getString(R.string.maxmin));
         Random random = new Random();
         return min + random.nextInt(max - min +1);
     }

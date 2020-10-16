@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="min">Von</string>
+    <string name="max">Bis</string>
+    <string name="maxmin">falsches Verhältnis</string>
+    <string name="generateNumber">Nummer generieren</string>
+    <string name="emptyInputMessage">Eingabe ist leer</string>
+</resources>

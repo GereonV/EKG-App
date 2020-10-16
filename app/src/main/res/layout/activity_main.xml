@@ -18,27 +18,26 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text=""/>
+            android:textSize="20sp"/>
         <EditText
             android:id="@+id/editTextMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Von"
+            android:hint="@string/min"
             android:inputType="number"/>
 
         <EditText
             android:id="@+id/editTextMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Bis"
+            android:hint="@string/max"
             android:inputType="number"/>
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="random number"/>
+            android:text="@string/generateNumber"/>
 
     </LinearLayout>
 
