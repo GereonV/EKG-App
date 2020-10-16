@@ -35,8 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void onButtonClick() {
         try {
-            int randomNumber = rngFromSpan(Integer.parseInt(editTextMin.getText().toString()), Integer.parseInt(editTextMax.getText().toString()));
-            textView.setText(String.valueOf(randomNumber));
+            if(!editTextMin.getText().toString().isEmpty() && !editTextMax.getText().toString().isEmpty()) {
+                int randomNumber = rngFromSpan(Integer.parseInt(editTextMin.getText().toString()), Integer.parseInt(editTextMax.getText().toString()));
+                textView.setText(String.valueOf(randomNumber));
+            } else {
+                Toast.makeText(this, "Eingabe ausfüllen", Toast.LENGTH_SHORT).show();
+            }
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
