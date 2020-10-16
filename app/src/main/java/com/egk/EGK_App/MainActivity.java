@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             String min = editTextMin.getText().toString();
             String max = editTextMax.getText().toString();
             if(!max.isEmpty()) {
-                int randomNumber = rngFromSpan(min.isEmpty() ? 0 : Integer.parseInt(min), Integer.parseInt(max));
+                int randomNumber = rngFromSpan(min.isEmpty() ? 1 : Integer.parseInt(min), Integer.parseInt(max));
                 textView.setText(String.valueOf(randomNumber));
             } else Toast.makeText(this, getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
