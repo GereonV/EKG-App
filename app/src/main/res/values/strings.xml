@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">EGK</string>
     <string name="min">Min</string>
     <string name="max">Max</string>
     <string name="maxmin">wrong max-min ratio</string>
