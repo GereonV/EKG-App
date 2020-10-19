@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
      * fill TextView with random number in between the ones in EditTexts (min defaults to 1) or throws Error through Toast-Message
      */
     private void onButtonClick() {
+        textView.setText(null);
         String minString = editTextMin.getText().toString();
         String maxString = editTextMax.getText().toString();
         if(!maxString.isEmpty()) {
@@ -52,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
             }
             catch(Exception e) {toast(e.getMessage(), Toast.LENGTH_SHORT);}
         }
-        else toast(getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT);
+        else {
+            toast(getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT);
+            editTextMax.requestFocus();
+            showKeyboard();
+        }
     }
 
     /**
@@ -82,6 +87,17 @@ public class MainActivity extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             if(imm != null) imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             v.clearFocus();
+        }
+    }
+
+    /**
+     * shows Keyboard if something is focused
+     */
+    private void showKeyboard() {
+        View v = getCurrentFocus();
+        if(v != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if(imm != null) imm.showSoftInput(v, 0);
         }
     }
 }
