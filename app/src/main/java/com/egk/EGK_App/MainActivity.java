@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText(output);
                 hideKeyboard();
             }
-            catch(Exception e) {toast(e.getMessage(), Toast.LENGTH_SHORT);}
+            catch(Exception e) {toast(e.getMessage(), Toast.LENGTH_LONG);}
         }
         else {
             toast(getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT);
