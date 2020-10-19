@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             toast(getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT);
-            editTextMax.requestFocus();
-            showKeyboard();
+            showKeyboard(editTextMax);
         }
     }
 
@@ -91,13 +90,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * shows Keyboard if something is focused
+     * focuses EditText and shows Keyboard
+     * @param editText editText to focus
      */
-    private void showKeyboard() {
-        View v = getCurrentFocus();
-        if(v != null) {
+    private void showKeyboard(EditText editText) {
+        editText.requestFocus();
+        if(editText.hasFocus()) {
             InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-            if(imm != null) imm.showSoftInput(v, 0);
+            if (imm != null) imm.showSoftInput(editText.findFocus(), 0);
         }
     }
 }
