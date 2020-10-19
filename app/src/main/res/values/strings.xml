@@ -5,4 +5,5 @@
     <string name="maxmin">wrong max-min ratio</string>
     <string name="generateNumber">generate Number</string>
     <string name="emptyInputMessage">input is empty</string>
+    <string name="invalidInputMessage">input is invalid</string>
 </resources>
