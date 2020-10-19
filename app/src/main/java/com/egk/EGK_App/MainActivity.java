@@ -34,12 +34,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onButtonClick() {
-        try {
-            String min = editTextMin.getText().toString();
-            String max = editTextMax.getText().toString();
-            if(!max.isEmpty()) textView.setText(String.valueOf(rngFromSpan(min.isEmpty() ? 1 : Integer.parseInt(min), Integer.parseInt(max))));
-            else toast(getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT);
-        } catch (Exception e) { toast(e.getMessage(), Toast.LENGTH_SHORT); }
+        String minString = editTextMin.getText().toString();
+        String maxString = editTextMax.getText().toString();
+        if(!maxString.isEmpty()) {
+            int min = minString.isEmpty() ? 1 : Integer.parseInt(minString);
+            int max = Integer.parseInt(maxString);
+            try {
+                int randomNumber = rngFromSpan(min, max);
+                String output = String.valueOf(randomNumber);
+                textView.setText(output);
+            }
+            catch(Exception e) {toast(e.getMessage(), Toast.LENGTH_SHORT);}
+        }
+        else toast(getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT);
     }
 
     /**
