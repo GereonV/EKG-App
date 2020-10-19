@@ -71,16 +71,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * shows a Toast-message and returns wheter it succeeded
+     * shows a Toast-message if length is valid
      * @param message the message of the Toast
      * @param length the length the Toast should be shown (Toast constants)
      */
-    private boolean toast(String message, int length) {
-        if(length != Toast.LENGTH_SHORT && length != Toast.LENGTH_LONG) return false;
-        else {
-            Toast.makeText(this, message, length).show();
-            return true;
-        }
+    private void toast(String message, int length) {
+        if(length == Toast.LENGTH_SHORT || length == Toast.LENGTH_LONG) Toast.makeText(this, message, length).show();
     }
 
     /**
