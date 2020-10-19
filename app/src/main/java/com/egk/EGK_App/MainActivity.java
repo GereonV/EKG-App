@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
      * fill TextView with random number in between the ones in EditTexts (min defaults to 1) or throws Error through Toast-Message
      */
     private void onButtonClick() {
-        hideKeyboard();
-
         String minString = editTextMin.getText().toString();
         String maxString = editTextMax.getText().toString();
         if(!maxString.isEmpty()) {
@@ -50,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 int randomNumber = rngFromSpan(min, max);
                 String output = String.valueOf(randomNumber);
                 textView.setText(output);
+                hideKeyboard();
             }
             catch(Exception e) {toast(e.getMessage(), Toast.LENGTH_SHORT);}
         }
