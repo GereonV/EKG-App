@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(view -> onButtonClick());
     }
 
+    /**
+     * fill TextView with random number in between the ones in EditTexts (min defaults to 1) or throws Error through Toast-Message
+     */
     private void onButtonClick() {
         String minString = editTextMin.getText().toString();
         String maxString = editTextMax.getText().toString();
@@ -65,7 +68,5 @@ public class MainActivity extends AppCompatActivity {
      * @param message the message of the Toast
      * @param length the length the Toast should be shown (Toast constants)
      */
-    private void toast(String message, int length) {
-        Toast.makeText(this, message, length).show();
-    }
+    private void toast(String message, int length) {Toast.makeText(this, message, length).show();}
 }
