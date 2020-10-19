@@ -2,7 +2,11 @@ package com.egk.EGK_App;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
      * fill TextView with random number in between the ones in EditTexts (min defaults to 1) or throws Error through Toast-Message
      */
     private void onButtonClick() {
+        hideKeyboard();
+
         String minString = editTextMin.getText().toString();
         String maxString = editTextMax.getText().toString();
         if(!maxString.isEmpty()) {
@@ -69,4 +75,16 @@ public class MainActivity extends AppCompatActivity {
      * @param length the length the Toast should be shown (Toast constants)
      */
     private void toast(String message, int length) {Toast.makeText(this, message, length).show();}
+
+    /**
+     * hides Keyboard and clearsFocus
+     */
+    private void hideKeyboard() {
+        View v = getCurrentFocus();
+        if(v != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if(imm != null) imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            v.clearFocus();
+        }
+    }
 }
