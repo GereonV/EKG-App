@@ -71,11 +71,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * shows a Toast-message
+     * shows a Toast-message and returns wheter it succeeded
      * @param message the message of the Toast
      * @param length the length the Toast should be shown (Toast constants)
      */
-    private void toast(String message, int length) {Toast.makeText(this, message, length).show();}
+    private boolean toast(String message, int length) {
+        if(length != Toast.LENGTH_SHORT && length != Toast.LENGTH_LONG) return false;
+        else {
+            Toast.makeText(this, message, length).show();
+            return true;
+        }
+    }
 
     /**
      * hides Keyboard and clearsFocus
