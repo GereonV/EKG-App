@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(null);
         String minString = editTextMin.getText().toString();
         String maxString = editTextMax.getText().toString();
-        if(!maxString.isEmpty()) {
+        if(minString.length() > 9 || maxString.length() > 9) toast(getString(R.string.invalidInputMessage), Toast.LENGTH_LONG);
+        else if(!maxString.isEmpty()) {
             int min = minString.isEmpty() ? 1 : Integer.parseInt(minString);
             int max = Integer.parseInt(maxString);
             try {
@@ -52,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 hideKeyboard();
             }
             catch(Exception e) {toast(e.getMessage(), Toast.LENGTH_LONG);}
-        }
-        else {
+        } else {
             toast(getString(R.string.emptyInputMessage), Toast.LENGTH_SHORT);
             showKeyboard(editTextMax);
         }
