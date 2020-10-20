@@ -19,6 +19,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    Toast toast;
+
     TextView textView;
     EditText editTextMin;
     EditText editTextMax;
@@ -95,7 +97,11 @@ public class MainActivity extends AppCompatActivity {
      * @param length the length the Toast should be shown (Toast constants)
      */
     private void toast(String message, int length) {
-        if(length == Toast.LENGTH_SHORT || length == Toast.LENGTH_LONG) Toast.makeText(this, message, length).show();
+        if(length == Toast.LENGTH_SHORT || length == Toast.LENGTH_LONG) {
+            if(toast != null) toast.cancel();
+            toast = Toast.makeText(this, message, length);
+            toast.show();
+        }
     }
 
     /**
