@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * returns random number from span
+     * @return random number from span
      * @param min smallest possible outcome (inclusive)
      * @param max biggest possible outcome (inclusive)
      */
