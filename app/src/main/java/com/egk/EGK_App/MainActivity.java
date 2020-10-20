@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         if(input.length() > 9) {
             editText.setText(input.substring(0, 9));
             editText.setSelection(9);
-            toast(getString(R.string.tooLongInputMessage), Toast.LENGTH_LONG);
+            toast(getString(R.string.tooLongInputMessage), Toast.LENGTH_SHORT);
         }
     }
 
