@@ -12,6 +12,11 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+/**
+ * @author Gereon, Leon
+ * @see BasicTextWatcher
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;

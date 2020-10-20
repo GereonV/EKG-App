@@ -4,6 +4,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
+/**
+ * cleaned up TextWatcher
+ * @author Gereon
+ * @version 1.0
+ */
+
 public abstract class BasicTextWatcher implements TextWatcher {
 
     private EditText editText;
