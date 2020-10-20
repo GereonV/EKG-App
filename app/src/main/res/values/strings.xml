@@ -6,4 +6,5 @@
     <string name="generateNumber">generate Number</string>
     <string name="emptyInputMessage">input is empty</string>
     <string name="invalidInputMessage">input is invalid</string>
+    <string name="tooLongInputMessage">input is too long</string>
 </resources>
