@@ -5,5 +5,5 @@
     <string name="maxmin">falsches Verhältnis</string>
     <string name="generateNumber">Nummer generieren</string>
     <string name="emptyInputMessage">Eingabe ist leer</string>
-    <string name="invalidInputMessage">Eingabe ist ungültig</string>
+    <string name="invalidInputMessage">falsche Eingabe</string>
 </resources>
