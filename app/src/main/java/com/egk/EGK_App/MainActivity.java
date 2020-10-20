@@ -37,10 +37,15 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(view -> onButtonClick());
     }
 
+    /**
+     * shortens the input if 10th character is input, shows Toast
+     * @param editText editText to be controlled
+     */
     private void onTextChanged(EditText editText) {
         String input = editText.getText().toString();
         if(input.length() > 9) {
             editText.setText(input.substring(0, 9));
+            editText.setSelection(9);
             toast(getString(R.string.tooLongInputMessage), Toast.LENGTH_LONG);
         }
     }
@@ -111,6 +116,4 @@ public class MainActivity extends AppCompatActivity {
             if (imm != null) imm.showSoftInput(editText.findFocus(), 0);
         }
     }
-
-
 }
