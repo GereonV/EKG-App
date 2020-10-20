@@ -32,7 +32,17 @@ public class MainActivity extends AppCompatActivity {
         editTextMax = findViewById(R.id.editTextMax);
         button = findViewById(R.id.button);
 
+        editTextMin.addTextChangedListener(new BasicTextWatcher(editTextMin) {public void onTextChanged(EditText editText) {MainActivity.this.onTextChanged(editText);}});
+        editTextMax.addTextChangedListener(new BasicTextWatcher(editTextMax) {public void onTextChanged(EditText editText) {MainActivity.this.onTextChanged(editText);}});
         button.setOnClickListener(view -> onButtonClick());
+    }
+
+    private void onTextChanged(EditText editText) {
+        String input = editText.getText().toString();
+        if(input.length() > 9) {
+            editText.setText(input.substring(0, 9));
+            toast(getString(R.string.tooLongInputMessage), Toast.LENGTH_LONG);
+        }
     }
 
     /**
@@ -42,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(null);
         String minString = editTextMin.getText().toString();
         String maxString = editTextMax.getText().toString();
-        if(minString.length() > 9 || maxString.length() > 9) toast(getString(R.string.invalidInputMessage), Toast.LENGTH_LONG);
-        else if(!maxString.isEmpty()) {
+        if(!maxString.isEmpty()) {
             int min = minString.isEmpty() ? 1 : Integer.parseInt(minString);
             int max = Integer.parseInt(maxString);
             try {
@@ -102,4 +111,6 @@ public class MainActivity extends AppCompatActivity {
             if (imm != null) imm.showSoftInput(editText.findFocus(), 0);
         }
     }
+
+
 }
