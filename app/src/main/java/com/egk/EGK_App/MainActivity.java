@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     Toast toast;
 
-    TextView textView;
     EditText editTextMin;
     EditText editTextMax;
+    TextView textView;
     Button button;
 
     @Override
