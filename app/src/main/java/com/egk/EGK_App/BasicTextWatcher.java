@@ -25,9 +25,7 @@ public abstract class BasicTextWatcher implements TextWatcher {
     public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
     @Override
-    public void afterTextChanged(Editable s) {
-        this.onTextChanged(editText);
-    }
+    public void afterTextChanged(Editable s) {this.onTextChanged(editText);} //calls abstract method
 
-    public abstract void onTextChanged(EditText editText);
+    public abstract void onTextChanged(EditText editText);  //only method that needs to be implemented, called instead of afterTextChanged-method
 }
