@@ -10,15 +10,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
- * @author Gereon, Leon
+ * @author Gereon
  * @see BasicTextWatcher
  */
 
 public class MainActivity extends AppCompatActivity {
 
+    boolean[] generatedNumbers;
+    int min, max = 0;
     Toast toast;
 
     EditText editTextMin;
@@ -87,9 +90,26 @@ public class MainActivity extends AppCompatActivity {
      * @param max biggest possible outcome (inclusive)
      */
     private int rngFromSpan(int min, int max) throws Exception {
+        boolean reset = true;   //set default value
+        if(generatedNumbers != null) for(boolean generatedNumber : generatedNumbers) if(!generatedNumber) {
+            reset = false;    //if generatedNumbers contains a false reset gets assigned to false
+            break;  //terminates loop
+        }
+        if(!reset) reset = this.min != min || this.max != max;   //if list isn't full reset gets assigned to true if inputs differ from the last ones
+
         if(max <= min) throw new Exception(getString(R.string.maxmin)); //throws an error if inputs are invalid
+        else if(reset) {    //resets variables if needed
+            this.min = min; //stores min input locally
+            this.max = max; //stores min input locally
+            generatedNumbers = new boolean[max - min + 1];  //resets generatedNumbers with according size
+            Arrays.fill(generatedNumbers, false);   //set all values in generatedNumbers to false
+        }
+
         Random random = new Random();
-        return min + random.nextInt(max - min +1);  //returns random number
+        int randomNumber = min + random.nextInt(max - min +1);  //sets initial randomNumber
+        while(generatedNumbers[randomNumber - min]) randomNumber = min + random.nextInt(max - min +1);  //generates new random number if needed
+        generatedNumbers[randomNumber - min] = true;    //adds generated number to generatedNumbers
+        return randomNumber;  //returns random number
     }
 
     /**
@@ -113,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         if(v != null) { //if something is focused
             InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);   //gets InputMethodManager from Activity
             if(imm != null) imm.hideSoftInputFromWindow(v.getWindowToken(), 0); //hides Keyboard
-            v.clearFocus();
+            v.clearFocus(); //removes current focus
         }
     }
 
