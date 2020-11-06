@@ -2,9 +2,8 @@
 <resources>
     <string name="min">Von</string>
     <string name="max">Bis</string>
-    <string name="maxmin">falsches Verhältnis</string>
+    <string name="maxminRatioMessage">falsches Verhältnis</string>
     <string name="generateNumber">Nummer generieren</string>
     <string name="emptyInputMessage">Eingabe ist leer</string>
-    <string name="invalidInputMessage">falsche Eingabe</string>
     <string name="tooLongInputMessage">Eingabe ist zu lang</string>
 </resources>

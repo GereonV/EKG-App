@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-                <EditText
+                <com.egk.EGK_App.EditView
                     android:id="@+id/editTextMin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
                     android:inputType="number"
                     android:layout_marginEnd="15dp"/>
 
-                <EditText
+                <com.egk.EGK_App.EditView
                     android:id="@+id/editTextMax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

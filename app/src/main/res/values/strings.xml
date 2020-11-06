@@ -2,9 +2,8 @@
     <string name="app_name" translatable="false">EGK</string>
     <string name="min">Min</string>
     <string name="max">Max</string>
-    <string name="maxmin">wrong max-min ratio</string>
     <string name="generateNumber">generate Number</string>
+    <string name="maxminRatioMessage">wrong max-min ratio</string>
     <string name="emptyInputMessage">input is empty</string>
-    <string name="invalidInputMessage">input is invalid</string>
     <string name="tooLongInputMessage">input is too long</string>
 </resources>
