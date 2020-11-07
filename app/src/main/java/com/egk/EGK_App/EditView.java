@@ -62,7 +62,18 @@ public class EditView extends androidx.appcompat.widget.AppCompatEditText implem
         addTextChangedListener(this);
     }
 
+    /**
+     * checks for inputs
+     * @return wheter there are currently no inputs
+     */
     public boolean isEmpty() {
         return getText().toString().isEmpty();
+    }
+
+    /**
+     * clears Text
+     */
+    public void clear() {
+        setText(null);
     }
 }

@@ -12,6 +12,8 @@ import android.widget.Toast;
  * @author Gereon
  * @see EditView
  * @see Toaster
+ * @see Keyboard
+ * @see RandomNumberGenerator
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -28,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        generator = new RandomNumberGenerator();
-        toaster = new Toaster(this);
+        generator = new RandomNumberGenerator();    //creates new Generator
+        toaster = new Toaster(this);    //creates new Toast-Helper
         initViews();
     }
 
@@ -66,18 +68,19 @@ public class MainActivity extends AppCompatActivity {
     private void onButtonClick() {
         textView.setText(null); //clears textView's content
 
-        if(!editViewMax.isEmpty()) {
-            int min = editViewMin.isEmpty() ? 1 : Integer.parseInt(editViewMin.getText().toString());
-            int max = Integer.parseInt(editViewMax.getText().toString());
-            if(min >= max) {
-                toaster.show(R.string.maxminRatioMessage, Toast.LENGTH_SHORT, true);
-                Keyboard.show(editViewMax);
-            } else {
-                textView.setText(String.valueOf(generator.nextRandomNumber(min, max)));
+        if(!editViewMax.isEmpty()) {    //if a max value is specified
+            int min = editViewMin.isEmpty() ? 1 : Integer.parseInt(editViewMin.getText().toString());   //set min to input, defaults to one
+            int max = Integer.parseInt(editViewMax.getText().toString());   //sets max to input
+            if(min >= max) {    //if max isn't bigger than min
+                toaster.show(R.string.maxminRatioMessage, Toast.LENGTH_SHORT, true);    //shows Toast with Error to User
+                Keyboard.show(editViewMax); //opens max input
+            } else {    //if correct inputs
+                textView.setText(String.valueOf(generator.nextRandomNumber(min, max))); //set Text to a random number
+                Keyboard.hide(this);    //hides Keyboard
             }
-        } else {
-            toaster.show(R.string.emptyInputMessage, Toast.LENGTH_SHORT, true);
-            Keyboard.show(editViewMax);
+        } else {    //if no max value is specified
+            toaster.show(R.string.emptyInputMessage, Toast.LENGTH_SHORT, true); //shows Error to User
+            Keyboard.show(editViewMax); //opens max input
         }
     }
 }
