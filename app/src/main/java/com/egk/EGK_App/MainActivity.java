@@ -59,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
     private void onTextChanged(EditText editText) {
         String input = editText.getText().toString();   //gets text from EditText
         if(input.length() > 9) {    //if input is too long
+            int selection = Math.min(editText.getSelectionStart(), 9);   //get cursor position, maxes out at 9
             editText.setText(input.substring(0, 9));    //deletes last character
-            editText.setSelection(9);   //sets cursor to last character
+            editText.setSelection(selection);   //sets cursor to previous position
             toaster.show(R.string.tooLongInputMessage, Toast.LENGTH_SHORT, true);   //shows error as Toast
         }
     }
