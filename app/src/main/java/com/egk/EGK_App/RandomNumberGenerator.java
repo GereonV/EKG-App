@@ -17,19 +17,42 @@ public class RandomNumberGenerator {
     private State state = new State();
 
     /**
-     * generates random number and checks for previous generations to avoid doubling
+     * generates random number
      * @param min smallest possible outcome (inclusive)
      * @param max biggest possible outcome (inclusive)
-     * @return random number not yet generated
+     * @return random number
      */
     public int nextRandomNumber(int min, int max) {
-        if(state.boundsChanged(min, max)) state.reset(min, max);
-        else if(state.isFull()) state.reset();
+        return nextRandomNumber(min, max, false);
+    }
+
+    /**
+     * generates random number and checks for previous numbers to avoid doubling
+     * @param min smallest possible outcome (inclusive)
+     * @param max biggest possible outcome (inclusive)
+     * @return random number not previously generated
+     */
+    public int nextNewRandomNumber(int min, int max) {
+        return nextRandomNumber(min, max, true);
+    }
+
+    /**
+     * generates random number and can check for previous numbers to avoid doubling
+     * @param min smallest possible outcome (inclusive)
+     * @param max biggest possible outcome (inclusive)
+     * @param avoidDoubling wheter doubles can be returned
+     * @return random number
+     */
+    public int nextRandomNumber(int min, int max, boolean avoidDoubling) {
+        if(avoidDoubling) {
+            if(state.boundsChanged(min, max)) state.reset(min, max);
+            else if(state.isFull()) state.reset();
+        }
 
         Random random = new Random();
         int randomNumber;
-        do randomNumber = min + random.nextInt(max - min + 1); while(state.generatedNumbers.contains(randomNumber));
-        state.generatedNumbers.add(randomNumber);
+        do randomNumber = min + random.nextInt(max - min + 1); while(avoidDoubling && state.generatedNumbers.contains(randomNumber));
+        if(avoidDoubling) state.generatedNumbers.add(randomNumber);
         return randomNumber;
     }
 

@@ -1,6 +1,7 @@
 package com.egk.EGK_App;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditView editViewMax;
     TextView textView;
     Button button;
+    SwitchCompat switchCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         editViewMin = findViewById(R.id.editTextMin);
         editViewMax = findViewById(R.id.editTextMax);
         button = findViewById(R.id.button);
+        switchCompat = findViewById(R.id.switchCompat);
 
         editViewMin.setOnTextChangedListener(this::onTextChanged);  //calls onTextChanged-method when Text changes
         editViewMax.setOnTextChangedListener(this::onTextChanged);  //calls onTextChanged-method when Text changes
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 toaster.show(R.string.maxminRatioMessage, Toast.LENGTH_SHORT, true);    //shows Toast with Error to User
                 Keyboard.show(editViewMax); //opens max input
             } else {    //if correct inputs
-                textView.setText(String.valueOf(generator.nextRandomNumber(min, max))); //set Text to a random number
+                textView.setText(String.valueOf(generator.nextRandomNumber(min, max, switchCompat.isChecked()))); //set Text to a random number
                 Keyboard.hide(this);    //hides Keyboard
             }
         } else {    //if no max value is specified
